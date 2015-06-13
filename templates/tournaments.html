@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block header %}
+<h2>Tournaments</h2>
+{% endblock %}
+
+{% block scripts%}
+<script src="/scripts/tournaments.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+
+<div id="data_table">
+<table>
+<tr>
+  <th>Name</th>
+  <th>Order</th>
+  <th>Bounty</th>
+  <th>High Hand</th>
+  <th>Bad Beat</th>
+  <th>Place</th>
+  <th>Total</th>
+</tr>
+{% for d in data %}
+<tr class="{% cycle odd,even %}">
+  <td><a href="/players?id={{ d.player.key.id }}">{{ d.player.name }}</a></td>
+  <td class="data_td">{{ d.signout_order }}</td>
+  <td class="data_td">{% if d.bounty %}5{% endif %}</td>
+  <td class="data_td">{% if d.highhand %}5{% endif %}</td>
+  <td class="data_td">{% if d.badbeat %}5{% endif %}</td>
+  <td>
+  {% ifequal d.place 1 %}5 (1st){% endifequal %}
+  {% ifequal d.place 2 %}3 (2nd){% endifequal %}
+  {% ifequal d.place 3 %}2 (3rd){% endifequal %}
+  {% ifequal d.place 4 %}1 (4th){% endifequal %}
+  </td>
+  <td>{{ d.points }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+<script type="text/javascript">
+  $("#data_table").corner("round 10px");
+</script>
+
+<div id="data_selector">
+<ul>
+{% for t in tournaments %}
+  <li>
+    <div id="Tournament{{ t.key.id }}"  
+    {% ifequal t.key tournament.key %}class="selected"{% endifequal %}>
+    <div class="data_selection">
+    {% ifequal t.key.id tournament.key.id %}
+    {{ t.date }}
+    {% else %}
+    <a href="/tournaments?id={{ t.key.id }}">{{ t.date }}</a>
+    {% endifequal %}
+    </div>
+    </div>
+  </li>
+  <script type="text/javascript">
+    $("#Tournament{{ t.key.id }}").corner("round 5px");
+  </script>
+{% endfor %}
+</ul>
+</div>
+{% endblock %}
+

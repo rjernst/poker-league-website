@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}
+Manage
+{% endblock %}
+
+{% block header %}
+<h2>League Manager</h2>
+{% endblock %}
+
+{% block scripts %}
+<link rel="stylesheet" type="text/css" href="/css/jquery.autocomplete.css" />
+<script src="/scripts/jquery.autocomplete.js" type="text/javascript"></script>
+<script src="/scripts/tournaments.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="rounded" id="tournament_control">
+<div id="add_tournament">
+Date: <input type="text" id="tournamentDate" /><br />
+Location: <input type="text" id="tournamentLocation" /><br />
+<input class="center" type="submit" value="Add Tournament" onclick="newTournament();" />
+</div>
+<hr />
+{% if tournaments %}
+<h3>Open Tournaments</h3>
+<table style="width: 400px;" id="openTable">
+  <tr>
+    <th>Date</th>
+    <th>Location</th>
+    <th class="controlcol">Edit</th>
+    <th class="controlcol">Reset</th>
+    <th class="controlcol">Delete</th>
+  </tr>
+{% for t in tournaments %}
+  <tr>
+    <td>{{ t.date }}</td>
+    <td>{{ t.location }}</td>
+    <td class="controlcol"><a href="javascript:editTournament('{{ t.key.id }}');">edit</a></td>
+    <td class="controlcol"><a href="javascript:resetTournament('{{ t.key.id }}', '{{ t.date }}');">reset</a></td>
+    <td class="controlcol"><a href="javascript:deleteTournament('{{ t.key.id }}', '{{ t.date }}');">delete</a></td>
+  </tr>
+{% endfor %}
+</table>
+{% endif %}
+<br />
+
+</div>
+
+<div class="rounded" id="name_control">
+<form action="/manage/players/add" method="post">
+Name: <input type="text" name="player.name" /><br />
+<input class="center" type="submit" value="Add Player" />
+</form>
+<hr />
+<ul id="player_list">
+{% for player in players %}
+  <li><a href="/players?id={{ player.key.id }}">{{ player.name }}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+<div class="rounded" id="location_control">
+<form action="/manage/location/update" method="post">
+Location: <br/>
+<textarea name="content" cols="35" rows="4">
+{{ location.content }}
+</textarea> <br/>
+<input class="center" type="submit" value="Update"/>
+</form>
+</div>
+{% endblock %}
+
+{% block popup %}
+
+<div id="signout">
+<div id="signout_header" style="text-align: center">
+<h3 id="tournDate">Empty</h3>
+<h4 id="tournLoc">Empty</h4>
+<input type="hidden" id="tournId" value="" />
+<hr />
+</div>
+<div class="signout_control">
+<input type="text" id="playerName" />
+<input type="submit" value="Signout" onclick="signoutPlayer();" />
+</div>
+<ol id="signout_list">
+</ol>
+<div id="signout_error" class="error">
+</div>
+<input type="submit" value="End Tournament" onclick="stopSignout();" 
+       class="signout_control" id="stop_signout" />
+</div>
+
+<div id="control">
+<hr />
+<div class="extra">
+<span>High Hand</span>
+<select id="highhandName">
+  <option value="None" default></option>
+</select> 
+</div>
+
+<div class="extra">
+<span>Bounty</span>
+<select id="bountyName">
+  <option value="None" default></option>
+</select>
+</div>
+
+<div class="extra">
+<span>Bad Beat</span>
+<select id="badbeatName">
+  <option value="None" default></option>
+</select>
+</div>
+
+<hr />
+<div id="close_error" class="error">
+</div>
+<div id="end_control">
+<input type="submit" value="Edit" onclick="reopenTournament();" />
+<input type="submit" value="Close" onclick="closeTournament();" />
+</div>
+
+</div>
+
+{% endblock %}

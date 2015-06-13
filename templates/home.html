@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block header %}
+<h2>Brown Dawgs Poker League</h2>
+{% endblock %}
+
+{% block content %}
+<div id="recent_tournaments" class="rounded">
+<h3>Recent Tournaments</h3>
+<hr />
+<ul>
+{% for t in recent_tournaments %}
+  <li><a href="/tournaments?id={{ t.id }}">{{ t.date }} - {{ t.location }}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+<div id="top_players" class="rounded">
+<h3>Top Players</h3>
+<hr />
+<ol>
+{% for p in top_players %}  
+  <li>
+  <span class="points">({{ p.points }})</span>
+  <a href="/players?id={{ p.id }}">{{ p.name }}</a> 
+  </li>  
+{% endfor %}
+</ol>
+</div>
+<div>
+<h3>Next Tournament</h3>
+<pre>{{ location.content }}</pre>
+</div>
+
+{% endblock %}

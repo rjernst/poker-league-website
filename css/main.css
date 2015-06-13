@@ -1,0 +1,275 @@
+.error {
+    color: #CC0000;
+    margin-top: -10px;
+    margin-bottom: 0px;
+}
+
+body {
+  font-family: lucida grande, lucida sans unicode, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link, a:visited, a:active {
+  color: black;
+}
+
+a:hover {
+  color: gray;
+}
+
+.rounded a:link, .rounded a:visited, .rounded a:active {
+  color: white;
+}
+
+#nav a {
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#container {
+  width: 800px;
+} 
+
+#nav {
+  align: left;
+  white-space: no-wrap;
+  list-style-type: none;
+  text-decoration: none;
+  font-size: 12px;
+  margin-top: 0px;
+}
+
+#header_wrapper {
+  margin-left: 150px;
+  padding-top: 20px;
+}
+
+#logo {
+  position: relative;
+  float: left;
+  top: -5px;
+}
+
+.rounded {
+  text-align: center;
+  background-color: #006600;
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+
+#content {
+  clear: both;
+}
+
+#data_selector {
+  margin-left: 0px;
+  width: 200px;
+}
+
+#data_selector ul {
+  list-style-type: none;
+}
+
+#data_selector ul li {
+  color: #6694E3; 
+  margin-left: 7px;
+  margin-bottom: 2px;
+  font-family: lucida grande, lucida sans unicode, sans-serif;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+#data_selector ul li .data_selection {
+  padding: 2px 2px 2px 18px;
+}
+
+
+.selected {
+  color: #FFFFFF;
+  cursor: default;
+  background: #006600 none repeat scroll 0 0;
+}
+
+.selected a:hover, .selected a:link, .selected a:active {
+  color: white;
+}
+
+#data_table {
+  position: relative;
+  padding: 5px;
+  top: 0px;
+  width: 550px;
+  background-color: #006600;
+  float: right;
+}
+
+table {
+  padding: 0px;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: white;
+}
+
+.data_td {
+  text-align: center;
+}
+
+td, th {
+  color: black;
+  border: 1px solid #bbb;
+  border-spacing: 0px;
+  padding: 0px 5px;
+  text-align: center;
+}
+
+th {
+  background-color: #006600;
+  color: white;
+}
+
+tr.odd {
+  backround-color: #CDC9C9;
+}
+
+tr.even {
+  background-color: #EEE9E9;
+}
+
+#popupBackground {
+  display: none;
+  position: fixed;
+  _position: absolute; /* hack for IE 6 */
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #000000;
+  border: 1px solid #cecece;
+  opacity: 0.7;
+  z-index: 5;
+}
+
+#popupContent {
+  display: none;
+  position: fixed;
+  _position: absolute; /* hack for IE 6 */
+  border: 2px solid #cecece;
+  z-index: 6;
+  padding: 12px;
+  background-color: white;
+}
+
+
+# tournaments specific...
+#signout {
+  margin: 20px;
+  text-align: center;
+}
+
+#signout h1, h2, h3, h4 {
+  margin: 0px auto;
+}
+
+#signout_list {
+  margin: 10px auto;
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+#stop_signout {
+  margin: 20px auto 0px;
+  display: block;
+}
+
+#control {
+  display: none;
+}
+
+#control .extra select {
+  display: block;
+  width: 80%;
+  margin: 3px auto;
+}
+
+#end_control {
+  text-align: center;
+  margin: 10px auto 0px;
+}
+
+#error {
+  display: none;
+  color: #CC0000;
+}
+
+#rule_list {
+  width: 400px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+#recent_tournaments {
+  width: 300px;
+  margin-right: 100px;
+  text-align: left;
+  float: right;
+}
+
+#top_players {
+  width: 250px;
+  text-align: left;
+  margin-left: 30px;
+}
+
+#name_control {
+  width: 250px;
+  margin-left: 20px;
+}
+
+#location_control {
+  width: 300px;
+  margin-left: 20px;
+  clear:both;
+}
+
+#player_list {
+  text-align: left;
+  list-style-type: none;
+}
+
+#tournament_control {
+  width: 400px;
+  float: right;
+}
+
+#tournament_control a:link {
+  color: gray;
+}
+
+#tournament_control a:hover {
+  color: gray;
+}
+
+#add_tournament {
+  text-align: left;
+}
+
+.center {
+  margin: 0px auto;
+}
+
+td.controlcol, th.controlcol {
+  padding: 0px;
+}
+
+.points {
+  float: right;
+  margin-right: 3px;
+}

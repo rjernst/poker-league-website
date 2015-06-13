@@ -1,0 +1,39 @@
+application: brown-dawg-poker-league
+version: 3
+runtime: python27
+api_version: 1
+threadsafe: false
+
+handlers:
+- url: /tournaments.*
+  script: handlers.tournaments.app
+
+- url: /players.*
+  script: handlers.players.app
+
+- url: /rules.*
+  script: handlers.rules.app
+
+- url: /manage/tournament.*
+  script: handlers.tournaments.app
+  login: required
+
+- url: /manage/players.*
+  script: handlers.players.app
+  login: required
+
+- url: /manage.*
+  script: handlers.manage.app
+  login: required
+
+- url: /css
+  static_dir: css
+
+- url: /images
+  static_dir: images
+
+- url: /scripts
+  static_dir: scripts
+
+- url: .*
+  script: handlers.main.app
